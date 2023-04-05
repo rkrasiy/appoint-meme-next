@@ -1,8 +1,8 @@
 export const user = {
     "id": 1,
-    "title": "Trupe",
+    "name": "Elon Musk",
     "subtitle": "drive cutting-edge initiatives",
-    "email": "eedmand0@pinterest.com",
+    "email": "elonkmusk@twitter.com",
     "phone": "951 620 0273",
-    "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJBSURBVDjLpZNLSJRhFIaf/1JO3lAbZyjDbpiXRC1FFFsUtJSwhMBsFy3b2CZaRAiuWre2opDCBCtalBl5qzSjhAwkqlWljRZizuj/fee0mHKmaFF04PDCd+A557wfx1FV/id8gKvDX8+pctKqbBERrIARwVrBimKspKXFGsWKTHQdL6n3AUT1VGt9TvhfOp+//qZqbQIrEgbof3sZIwZjDYEYAhuk1Jq12pnGLoLAZqQBkj4cqzjxV92/JQyBsSkPrBUAekbm/gpwqK6A1XSA+QEAaNsX4cboLEebomtvg6P3KcsYJVrVgbc+l9hi4tcJAiuIKr4HNx/P4XkufU/mcFzwNcHOxF1C0SaejfYwn9tCeVEmq0ES4P5cQQHfc2htjOC7cKQhwuH6CE0bx4kU1ZG7aQ8FyyMc2LGY/FojKUBgBRXwXbgz+RnPS+q9p1N8mu4nJ5yHXbxFuLyNqaFurDEo6QAjqCrrPGiuLSTkOzTvDbPbGSBa1gKJ54xfuUZ2XpyMhQns3DhZGX4KYCRJ81yHgZcxAIbHHhIsLZCTv4ysvAMV7NIE2/d3EJ++hGfjaQBjkh64cLA6jO8aovO95BXXIMtTqMSpbS1FVj8QCs1QuK2JamfwNw9UqSzO5uNCnM3Ljwjll5CZE0PNPDgek30zgCCJGQp3baVs5QFDnZUVjqpyuvv1iAlszaqVrMBY2vUsDe0X8dz3qPkCpF+si7ehlNlXL5i53dnr/Omcxy7UxtRKpoqiImmpa4oIqjr5HZAwT/Ha9ghQAAAAAElFTkSuQmCC"
+    "logo": "./hombre.svg"
 }
