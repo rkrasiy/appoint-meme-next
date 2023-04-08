@@ -13,6 +13,7 @@
   @apply font-semibold text-[var(--color-principal)];
 }
 
+
 /** Input group */
 .inputGroup {
   @apply flex flex-col gap-1 mb-8;
@@ -24,12 +25,17 @@
   @apply absolute right-0 -bottom-5 text-red-400 text-xs;
 }
 .inputGroup h3 {
-  @apply text-teal-500;
+  @apply text-[var(--color-principal)];
 }
 
 .inputGroup input {
-  @apply w-full bg-white border border-gray-300 p-2 rounded;
-  @apply focus:border-blue-500 focus:bg-white placeholder-gray-400;
+  @apply w-full bg-white border border-gray-300 p-2 rounded shadow-sm mb-4;
+  @apply focus:border-[var(--color-principal)] focus:bg-white placeholder-gray-400;
+}
+
+.inputGroup select {
+  @apply w-full bg-white border border-gray-300 p-2 rounded shadow-sm mb-4;
+  @apply focus:border-[var(--color-principal)] focus:bg-white placeholder-gray-400;
 }
 .inputInvalid{
   @apply border border-red-400 !important;
@@ -70,4 +76,11 @@
 }
 .markerGray{
   @apply bg-gray-300;
+}
+.markerStepActive {
+@apply h-6 w-6 rounded-full bg-[var(--color-principal)] text-white text-center text-[10px] font-bold leading-6
+}
+
+.markerStepDefault {
+@apply h-6 w-6 rounded-full bg-gray-100 text-center text-[10px] font-bold leading-6
 }
