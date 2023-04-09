@@ -1,4 +1,4 @@
-import { user } from '../data/user';
+import { user } from '../../../data/user';
 
 export default function Header() {
     return (
@@ -12,7 +12,7 @@ export default function Header() {
           className="h-10 w-full rounded-lg border-none bg-white pl-4 pr-10 text-sm shadow-sm sm:w-56"
           id="search"
           type="search"
-          placeholder="Buscar citas..."
+          placeholder="Buscar..."
         />
 
         <button

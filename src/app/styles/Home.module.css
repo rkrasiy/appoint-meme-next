@@ -84,3 +84,12 @@
 .markerStepDefault {
 @apply h-6 w-6 rounded-full bg-gray-100 text-center text-[10px] font-bold leading-6
 }
+
+
+.buttonStepActive {
+@apply inline-flex items-center rounded border border-[var(--color-principal)] px-4 py-1 text-[var(--color-principal)] hover:bg-[var(--color-principal)] hover:text-white focus:outline-none focus:ring active:bg-[var(--color-secundario)]
+}
+
+.buttonStepInactive {
+@apply inline-flex items-center rounded border  px-4 py-1  bg-red-400
+}

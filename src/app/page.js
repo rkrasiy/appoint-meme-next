@@ -1,6 +1,6 @@
-import Footer from '../../components/footer'
-import Header from '../../components/header'
-import FormSteps from '../../components/formSteps'
+import Footer from './components/footer'
+import Header from './components/header'
+import FormSteps from './components/formSteps'
 
 
 
