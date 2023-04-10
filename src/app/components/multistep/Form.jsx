@@ -4,7 +4,7 @@ import YourInfo from "./YourInfo";
 import Services from "./Services";
 import Step from "./Step";
 
-
+import { user } from "../../../../data/user";
 
 const Form = () => {
 
@@ -157,6 +157,12 @@ const Form = () => {
                 )) ||
                   (stepNumber === 2 && (
                     <Services
+                    servicesOptions={user.services} 
+                    employeeOptions={user.employers} 
+                    booking={booking} 
+                    onChangeBooking={changeBooking} 
+                    nextStep={nextStep} 
+                    prevStep={prevStep} 
                             
                     />
                   ))}
