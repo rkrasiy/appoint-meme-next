@@ -14,18 +14,13 @@ const Form = () => {
     { id: 3, title: "Día y hora", active: false },
     { id: 4, title: "Resumen", active: false },
   ]);
+
   const [yourInfo, setYourInfo] = useState({
     name: "",
     email: "",
     phone: "",
   });
   const [isEmpty, setIsEmpty] = useState(false);
-
-  const [service, setService] = useState({
-    id: 0,
-    title: "",
-    precio: "",
-  });
 
   const [servicesOptions, setServicesOptions] = useState([
     { id: 1, title: "Corte de pelo adulto", precio: "15€", selected: false },
@@ -40,7 +35,6 @@ const Form = () => {
     { id: 1, name: "Dani", cargo: "Empleado", selected: false },
   ]);
 
-  const [displayThankyou, setDisplayThankyou] = useState(false);
 
   //------------------------------SIDE EFFECTS------------------------------//
 
@@ -66,13 +60,7 @@ const Form = () => {
     }
   }, [
     stepNumber,
-    yourInfo,
-    displayThankyou,
-    service,
-    servicesOptions,
-    setServicesOptions,
-    employeeOptions,
-    setEmployeeOptions,
+
   ]);
 
   //------------------------------FUNCTIONS------------------------------//
@@ -94,7 +82,7 @@ const Form = () => {
     // }
 
     if (stepNumber == 2) {
-      if (setServicesOptions == false) {
+      if (setServicesOptions && setServicesOptions == false) {
         setIsEmpty(true);
         return;
       } else {
@@ -109,9 +97,6 @@ const Form = () => {
     setStepNumber((prevStep) => prevStep - 1);
   };
 
-  const changeClick = () => {
-    setStepNumber((prevStep) => prevStep - 2);
-  };
 
   const changeYourInfo = (event) => {
     setYourInfo((prevInfo) => {
@@ -119,24 +104,15 @@ const Form = () => {
     });
   };
 
-  const selectService = (title, precio, id) => {
-    setServicesOptions((prevServicesOptions) => {
-      const updatedServicesOptions = prevServicesOptions.map(
-        (serviceOption) => {
-          if (serviceOption.id == id) {
-            return { ...serviceOption, selected: true };
-          } else {
-            return { ...serviceOption, selected: false };
-          }
-        }
-      );
-      return updatedServicesOptions;
-    });
+  const selectService = (title, price, id) => {
 
-    setService((prevService) => {
-      return { ...prevService, title: title, precio: precio };
+
+    setServicesOptions((prevService) => {
+      return { ...prevService, title: title, precio: price };
     });
   };
+
+
 
   return (
     <div className="w-full max-w-3xl">
@@ -171,12 +147,8 @@ const Form = () => {
                     <Services
                       servicesOptions={servicesOptions}
                       employeeOptions={employeeOptions}
-                      onServiceSelect={selectService}
-                      key={servicesOptions.id}
-                      id={servicesOptions.id}
-                      title={servicesOptions.title}
-                      precio={servicesOptions.precio}
-                      selected={servicesOptions.selected}
+
+              
                     />
                   ))}
               </div>
@@ -189,7 +161,7 @@ const Form = () => {
                 </div>
                 {stepNumber === 4 ? (
                   <div
-                    onClick={() => setDisplayThankyou(true)}
+                   
                     className="font-medium bg-[var(--color-principal)] select-none text-white py-3 px-5 rounded-lg cursor-pointer transition duration-100 hover:opacity-90"
                   >
                     Confirmar

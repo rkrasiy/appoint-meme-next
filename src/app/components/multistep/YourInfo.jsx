@@ -3,24 +3,25 @@ import FormField from "./FormField";
 import SectionHeading from "./SectionHeading";
 
 const YourInfo = ({ yourInfo, onChangeYourInfo, isEmpty }) => {
+
   const [formFields, setFormFields] = useState([
     {
       id: 1,
       name: "name",
       label: "Nombre",
-      placeholder: "ej. John Doe",
+      placeholder: "ej. Jose Ordaz",
     },
     {
       id: 2,
       name: "email",
       label: "Email",
-      placeholder: "ej. john@gmail.com",
+      placeholder: "ej. joseordazsuay@gmail.com",
     },
     {
       id: 3,
       name: "phone",
       label: "Teléfono",
-      placeholder: "ej. +34 234 567 890",
+      placeholder: "ej. +34 680 851 926",
     },
   ]);
 
