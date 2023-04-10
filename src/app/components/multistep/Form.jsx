@@ -66,13 +66,7 @@ const Form = () => {
     }
   }, [
     stepNumber,
-    yourInfo,
-    displayThankyou,
-    service,
-    servicesOptions,
-    setServicesOptions,
-    employeeOptions,
-    setEmployeeOptions,
+
   ]);
 
   //------------------------------FUNCTIONS------------------------------//
@@ -109,9 +103,6 @@ const Form = () => {
     setStepNumber((prevStep) => prevStep - 1);
   };
 
-  const changeClick = () => {
-    setStepNumber((prevStep) => prevStep - 2);
-  };
 
   const changeYourInfo = (event) => {
     setYourInfo((prevInfo) => {
@@ -119,24 +110,9 @@ const Form = () => {
     });
   };
 
-  const selectService = (title, precio, id) => {
-    setServicesOptions((prevServicesOptions) => {
-      const updatedServicesOptions = prevServicesOptions.map(
-        (serviceOption) => {
-          if (serviceOption.id == id) {
-            return { ...serviceOption, selected: true };
-          } else {
-            return { ...serviceOption, selected: false };
-          }
-        }
-      );
-      return updatedServicesOptions;
-    });
 
-    setService((prevService) => {
-      return { ...prevService, title: title, precio: precio };
-    });
-  };
+
+
 
   return (
     <div className="w-full max-w-3xl">
@@ -171,12 +147,7 @@ const Form = () => {
                     <Services
                       servicesOptions={servicesOptions}
                       employeeOptions={employeeOptions}
-                      onServiceSelect={selectService}
-                      key={servicesOptions.id}
-                      id={servicesOptions.id}
-                      title={servicesOptions.title}
-                      precio={servicesOptions.precio}
-                      selected={servicesOptions.selected}
+              
                     />
                   ))}
               </div>
