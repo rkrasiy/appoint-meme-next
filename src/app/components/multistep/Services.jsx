@@ -1,12 +1,14 @@
 import SectionHeading from "./SectionHeading";
 
+import  user  from '../../../data/user.js';
+
+
 const Services = ({
-  servicesOptions,
-  employeeOptions,
+
 }) => {
 
   function Services() {
-    const services = servicesOptions.map((service) => (
+    const services = user.map((service) => (
       <option service={service} value={service.title} key={service.title}>
         {service.title} ({service.precio})
       </option>
@@ -27,7 +29,7 @@ const Services = ({
     <div className="my-5">
    
       <label>Seleccionar un servicio</label>
-      <select onChange={setServices}
+      <select 
         className="w-full rounded-lg border-gray-300 border p-3 text-sm"
       >
         {Services()}

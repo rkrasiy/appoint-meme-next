@@ -4,10 +4,17 @@ import YourInfo from "./YourInfo";
 import Services from "./Services";
 import Step from "./Step";
 
+
+
 const Form = () => {
-  //------------------------------STATES------------------------------
-  const [stepNumber, setStepNumber] = useState(() => 1);
+
+
+  //------------------------------STATES------------------------------//
+  
+  
+
   const [goBackVisible, setGoBackVisible] = useState("invisible");
+
   const [steps, setSteps] = useState([
     { id: 1, title: "Inf. de contacto", active: true },
     { id: 2, title: "Servicio", active: false },
@@ -20,20 +27,25 @@ const Form = () => {
     email: "",
     phone: "",
   });
+
+    // const [servicesOptions, setServicesOptions] = useState([
+  //   { id: 1, title: "Corte de pelo adulto", precio: "15€", selected: false },
+  //   { id: 2, title: "Corte de pelo niño", precio: "10€", selected: false },
+  //   { id: 4, title: "Corte de barba", precio: "8€", selected: false },
+  //   { id: 5, title: "Corte de pelo bebe", precio: "9€", selected: false },
+  // ]);
+
+  // const [employeeOptions, setEmployeeOptions] = useState([
+  //   { id: 1, name: "Juan", cargo: "Jefe", selected: false },
+  //   { id: 1, name: "Jose", cargo: "Empleado", selected: false },
+  //   { id: 1, name: "Dani", cargo: "Empleado", selected: false },
+  // ]);
+
+
+  const [stepNumber, setStepNumber] = useState((1));
   const [isEmpty, setIsEmpty] = useState(false);
 
-  const [servicesOptions, setServicesOptions] = useState([
-    { id: 1, title: "Corte de pelo adulto", precio: "15€", selected: false },
-    { id: 2, title: "Corte de pelo niño", precio: "10€", selected: false },
-    { id: 4, title: "Corte de barba", precio: "8€", selected: false },
-    { id: 5, title: "Corte de pelo bebe", precio: "9€", selected: false },
-  ]);
 
-  const [employeeOptions, setEmployeeOptions] = useState([
-    { id: 1, name: "Juan", cargo: "Jefe", selected: false },
-    { id: 1, name: "Jose", cargo: "Empleado", selected: false },
-    { id: 1, name: "Dani", cargo: "Empleado", selected: false },
-  ]);
 
 
   //------------------------------SIDE EFFECTS------------------------------//
@@ -121,14 +133,14 @@ const Form = () => {
           <div className="w-[245px] h-[508px] bg-[var(--color-principal)] rounded-xl"></div>
 
           <div className="flex justify-center mt-8 absolute inset-0 space-x-10 md:space-x-0 md:block md:mt-0 md:pl-6 md:pt-8 md:space-y-7">
-            {steps.map((step) => (
-              <Step
-                key={step.id}
-                number={step.id}
-                title={step.title}
-                active={step.active}
-              />
-            ))}
+            {[
+    { title: "Inf. de contacto" },
+    { title: "Servicio"},
+    { title: "Día y hora"},
+    { title: "Resumen" } 
+   ].map((item, index) => (
+  <Step key={item.title} number={index + 1} title={item.title} active={ setStepNumber === index } /> 
+  ))}
           </div>
         </div>
         <div className="flex flex-col justify-between absolute top-40 w-[450px] md:static mb-40 rounded-2xl mx-8 px-16 pt-10 pb-16 bg-white md:px-0 md:py-5 md:mx-12 md:w-100 md:my-2">
@@ -145,10 +157,7 @@ const Form = () => {
                 )) ||
                   (stepNumber === 2 && (
                     <Services
-                      servicesOptions={servicesOptions}
-                      employeeOptions={employeeOptions}
-
-              
+                            
                     />
                   ))}
               </div>
