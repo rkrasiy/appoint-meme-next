@@ -14,18 +14,13 @@ const Form = () => {
     { id: 3, title: "Día y hora", active: false },
     { id: 4, title: "Resumen", active: false },
   ]);
+
   const [yourInfo, setYourInfo] = useState({
     name: "",
     email: "",
     phone: "",
   });
   const [isEmpty, setIsEmpty] = useState(false);
-
-  const [service, setService] = useState({
-    id: 0,
-    title: "",
-    precio: "",
-  });
 
   const [servicesOptions, setServicesOptions] = useState([
     { id: 1, title: "Corte de pelo adulto", precio: "15€", selected: false },
@@ -40,7 +35,6 @@ const Form = () => {
     { id: 1, name: "Dani", cargo: "Empleado", selected: false },
   ]);
 
-  const [displayThankyou, setDisplayThankyou] = useState(false);
 
   //------------------------------SIDE EFFECTS------------------------------//
 
@@ -88,7 +82,7 @@ const Form = () => {
     // }
 
     if (stepNumber == 2) {
-      if (setServicesOptions == false) {
+      if (setServicesOptions && setServicesOptions == false) {
         setIsEmpty(true);
         return;
       } else {
@@ -110,7 +104,13 @@ const Form = () => {
     });
   };
 
+  const selectService = (title, price, id) => {
 
+
+    setServicesOptions((prevService) => {
+      return { ...prevService, title: title, precio: price };
+    });
+  };
 
 
 
@@ -147,6 +147,7 @@ const Form = () => {
                     <Services
                       servicesOptions={servicesOptions}
                       employeeOptions={employeeOptions}
+
               
                     />
                   ))}
@@ -160,7 +161,7 @@ const Form = () => {
                 </div>
                 {stepNumber === 4 ? (
                   <div
-                    onClick={() => setDisplayThankyou(true)}
+                   
                     className="font-medium bg-[var(--color-principal)] select-none text-white py-3 px-5 rounded-lg cursor-pointer transition duration-100 hover:opacity-90"
                   >
                     Confirmar

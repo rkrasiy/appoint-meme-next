@@ -3,14 +3,11 @@ import SectionHeading from "./SectionHeading";
 const Services = ({
   servicesOptions,
   employeeOptions,
-  onServiceSelect,
-  title,
-  precio,
-  id,
 }) => {
+
   function Services() {
     const services = servicesOptions.map((service) => (
-      <option value={service.title} key={service.id}>
+      <option service={service} value={service.title} key={service.title}>
         {service.title} ({service.precio})
       </option>
     ));
@@ -19,7 +16,7 @@ const Services = ({
 
   function Employee() {
     const employees = employeeOptions.map((employee) => (
-      <option value={employee.name} key={employee.id}>
+      <option employee={employee} value={employee.name} key={employee.name}>
         {employee.name}
       </option>
     ));
@@ -30,8 +27,7 @@ const Services = ({
     <div className="my-5">
    
       <label>Seleccionar un servicio</label>
-      <select
-        onChange={() => onServiceSelect(title, precio, id)}
+      <select onChange={setServices}
         className="w-full rounded-lg border-gray-300 border p-3 text-sm"
       >
         {Services()}
