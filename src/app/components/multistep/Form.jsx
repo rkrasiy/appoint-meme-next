@@ -1,34 +1,26 @@
 import React, { useEffect, useState } from "react";
 import YourInfo from "./YourInfo";
-
+import { user } from "../../../../data/user";
 import Services from "./Services";
 import Step from "./Step";
 
 import { user } from "../../../../data/user";
 
 const Form = () => {
-
-
-  //------------------------------STATES------------------------------//
-  
-  
-
+  //------------------------------STATES------------------------------
+  const [stepNumber, setStepNumber] = useState(1);
   const [goBackVisible, setGoBackVisible] = useState("invisible");
+  // const [steps, setSteps] = useState([
+  //   { id: 1, title: "Inf. de contacto", active: true },
+  //   { id: 2, title: "Servicio", active: false },
+  //   { id: 3, title: "Día y hora", active: false },
+  //   { id: 4, title: "Resumen", active: false },
+  // ]);
 
-  const [steps, setSteps] = useState([
-    { id: 1, title: "Inf. de contacto", active: true },
-    { id: 2, title: "Servicio", active: false },
-    { id: 3, title: "Día y hora", active: false },
-    { id: 4, title: "Resumen", active: false },
-  ]);
+  const [ booking, setBooking ] = useState({});
+  const [isEmpty, setIsEmpty] = useState(false);
 
-  const [yourInfo, setYourInfo] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-
-    // const [servicesOptions, setServicesOptions] = useState([
+  // const [servicesOptions, setServicesOptions] = useState([
   //   { id: 1, title: "Corte de pelo adulto", precio: "15€", selected: false },
   //   { id: 2, title: "Corte de pelo niño", precio: "10€", selected: false },
   //   { id: 4, title: "Corte de barba", precio: "8€", selected: false },
@@ -42,27 +34,21 @@ const Form = () => {
   // ]);
 
 
-  const [stepNumber, setStepNumber] = useState((1));
-  const [isEmpty, setIsEmpty] = useState(false);
-
-
-
-
   //------------------------------SIDE EFFECTS------------------------------//
 
   /*Este useEffect es para los titulos de los steps, los activa y desactiva*/
 
   useEffect(() => {
-    setSteps((prevSteps) => {
-      const updatedSteps = prevSteps.map((step) => {
-        if (step.id === stepNumber) {
-          return { ...step, active: true };
-        } else {
-          return { ...step, active: false };
-        }
-      });
-      return updatedSteps;
-    });
+    // setSteps((prevSteps) => {
+    //   const updatedSteps = prevSteps.map((step) => {
+    //     if (step.id === stepNumber) {
+    //       return { ...step, active: true };
+    //     } else {
+    //       return { ...step, active: false };
+    //     }
+    //   });
+    //   return updatedSteps;
+    // });
 
     /*Para el boton de volver atras*/
     if (stepNumber > 1) {
@@ -82,9 +68,9 @@ const Form = () => {
   const nextStep = () => {
     // if (stepNumber == 1) {
     //   if (
-    //     yourInfo.name.length == 0 ||
-    //     yourInfo.email.length == 0 ||
-    //     yourInfo.phone.length == 0
+    //     booking.name.length == 0 ||
+    //     booking.email.length == 0 ||
+    //     booking.phone.length == 0
     //   ) {
     //     setIsEmpty(true);
     //     return;
@@ -102,7 +88,11 @@ const Form = () => {
       }
     }
 
-    setStepNumber((prevStep) => prevStep + 1);
+    let step = stepNumber;
+    if(step + 1 > 1) step = 1
+    else step += 1
+
+    setStepNumber(step);
   };
 
   const prevStep = () => {
@@ -110,9 +100,9 @@ const Form = () => {
   };
 
 
-  const changeYourInfo = (event) => {
-    setYourInfo((prevInfo) => {
-      return { ...prevInfo, [event.target.name]: event.target.value };
+  const changeBooking = (event) => {
+    setBooking((data) => {
+      return { ...data, [event.target.name]: event.target.value };
     });
   };
 
@@ -125,7 +115,6 @@ const Form = () => {
   };
 
 
-
   return (
     <div className="w-full max-w-3xl">
       <div className="bg-[#d6d9e6] md:bg-white rounded-xl md:p-3 md:flex justify-center">
@@ -133,48 +122,55 @@ const Form = () => {
           <div className="w-[245px] h-[508px] bg-[var(--color-principal)] rounded-xl"></div>
 
           <div className="flex justify-center mt-8 absolute inset-0 space-x-10 md:space-x-0 md:block md:mt-0 md:pl-6 md:pt-8 md:space-y-7">
-            {[
-    { title: "Inf. de contacto" },
-    { title: "Servicio"},
-    { title: "Día y hora"},
-    { title: "Resumen" } 
-   ].map((item, index) => (
-  <Step key={item.title} number={index + 1} title={item.title} active={ setStepNumber === index } /> 
-  ))}
+            {
+              [
+                "Inf. de contacto",
+                "Servicio",
+                "Día y hora" ,
+                "Resumen",
+              ].map( (item, i) => (
+                <Step
+                  key={item}
+                  number={i + 1}
+                  title={item}
+                  active={i === stepNumber}
+                />
+              ))
+            }
           </div>
         </div>
         <div className="flex flex-col justify-between absolute top-40 w-[450px] md:static mb-40 rounded-2xl mx-8 px-16 pt-10 pb-16 bg-white md:px-0 md:py-5 md:mx-12 md:w-100 md:my-2">
           {
             <>
               <div>
-                {(stepNumber === 1 && (
+                {(stepNumber === 0 && (
                   <YourInfo
-                    onChangeYourInfo={changeYourInfo}
-                    yourInfo={yourInfo}
+                    onChangeBooking={changeBooking}
+                    booking={booking}
                     currentStep={stepNumber}
                     isEmpty={isEmpty}
+                     nextStep={nextStep}
                   />
                 )) ||
-                  (stepNumber === 2 && (
+                  (stepNumber === 1 && (
                     <Services
-                    servicesOptions={user.services} 
-                    employeeOptions={user.employers} 
-                    booking={booking} 
-                    onChangeBooking={changeBooking} 
-                    nextStep={nextStep} 
-                    prevStep={prevStep} 
-                            
+                      servicesOptions={user.services}
+                      employeeOptions={user.employers}
+                      booking={booking}
+                      onSelect={ ( data) => setBooking({...booking, ...data}) }
+                      nextStep={nextStep}
+                      prevStep={prevStep}
                     />
                   ))}
               </div>
-              <div className="flex justify-between fixed px-16 bottom-0 left-0 w-full bg-white p-5 md:p-0 md:static items-center w-[700px]]">
+              {/* <div className="flex justify-between fixed px-16 bottom-0 left-0 w-full bg-white p-5 md:p-0 md:static items-center w-[700px]]">
                 <div
                   onClick={prevStep}
                   className={`font-medium text-[#9699ab] select-none cursor-pointer transition duration-100 hover:text-[var(--color-principal)] ${goBackVisible}`}
                 >
                   Atras
-                </div>
-                {stepNumber === 4 ? (
+                </div> */}
+                {/* {stepNumber === 4 ? (
                   <div
                    
                     className="font-medium bg-[var(--color-principal)] select-none text-white py-3 px-5 rounded-lg cursor-pointer transition duration-100 hover:opacity-90"
@@ -188,8 +184,8 @@ const Form = () => {
                   >
                     Siguiente
                   </div>
-                )}
-              </div>
+                )} */}
+              {/* </div> */}
             </>
           }
         </div>

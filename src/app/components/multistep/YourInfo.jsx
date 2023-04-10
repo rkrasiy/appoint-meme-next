@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import FormField from "./FormField";
 import SectionHeading from "./SectionHeading";
 
-const YourInfo = ({ yourInfo, onChangeYourInfo, isEmpty }) => {
+const YourInfo = ({ booking, onChangeBooking, isEmpty, nextStep }) => {
 
   const [formFields, setFormFields] = useState([
     {
@@ -25,6 +25,10 @@ const YourInfo = ({ yourInfo, onChangeYourInfo, isEmpty }) => {
     },
   ]);
 
+  const nextHandler = () => {
+	  nextStep();
+	}
+
   return (
     <div>
       <SectionHeading
@@ -35,17 +39,25 @@ const YourInfo = ({ yourInfo, onChangeYourInfo, isEmpty }) => {
         <div className="flex flex-col space-y-6 text-[14px]">
           {formFields.map((formField) => (
             <FormField
-              onChangeYourInfo={onChangeYourInfo}
+              onChangeBooking={onChangeBooking}
               key={formField.id}
               name={formField.name}
               label={formField.label}
               placeholder={formField.placeholder}
-              value={yourInfo[formField.name]}
+              value={booking[formField.name]}
               isEmpty={isEmpty}
             />
           ))}
         </div>
       </form>
+      <div className="flex justify-between fixed px-16 bottom-0 left-0 w-full bg-white p-5 md:p-0 md:static items-center w-[700px]]">
+				<button
+					onClick={nextHandler}
+					className="font-medium bg-[var(--color-principal)] select-none text-white py-3 px-5 rounded-lg cursor-pointer transition duration-100 hover:opacity-90"
+				>
+					Siguiente
+				</button>
+			</div>
     </div>
   );
 };
