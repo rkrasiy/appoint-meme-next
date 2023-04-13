@@ -3,12 +3,11 @@ import YourInfo from "./YourInfo";
 import { user } from "../../../../data/user";
 import Services from "./Services";
 import Step from "./Step";
-
-import { user } from "../../../../data/user";
+import SelectDay from "./SelectDay";
 
 const Form = () => {
   //------------------------------STATES------------------------------
-  const [stepNumber, setStepNumber] = useState(1);
+  const [stepNumber, setStepNumber] = useState(0);
   const [goBackVisible, setGoBackVisible] = useState("invisible");
   // const [steps, setSteps] = useState([
   //   { id: 1, title: "Inf. de contacto", active: true },
@@ -79,20 +78,22 @@ const Form = () => {
     //   }
     // }
 
-    if (stepNumber == 2) {
-      if (setServicesOptions && setServicesOptions == false) {
-        setIsEmpty(true);
-        return;
-      } else {
-        setIsEmpty(false);
-      }
-    }
+    // if (stepNumber == 2) {
+    //   if (setServicesOptions && setServicesOptions == false) {
+    //     setIsEmpty(true);
+    //     return;
+    //   } else {
+    //     setIsEmpty(false);
+    //   }
+    // }
 
     let step = stepNumber;
-    if(step + 1 > 1) step = 1
+    if(step + 1 > 1) step += 1
     else step += 1
 
     setStepNumber(step);
+
+    console.log(step)
   };
 
   const prevStep = () => {
@@ -106,13 +107,7 @@ const Form = () => {
     });
   };
 
-  const selectService = (title, price, id) => {
-
-
-    setServicesOptions((prevService) => {
-      return { ...prevService, title: title, precio: price };
-    });
-  };
+ 
 
 
   return (
@@ -139,17 +134,18 @@ const Form = () => {
             }
           </div>
         </div>
-        <div className="flex flex-col justify-between absolute top-40 w-[450px] md:static mb-40 rounded-2xl mx-8 px-16 pt-10 pb-16 bg-white md:px-0 md:py-5 md:mx-12 md:w-100 md:my-2">
+        <div className="flex flex-col justify-between relative top-0 w-[450px] mb-40 rounded-2xl mx-8 px-16 pt-10 pb-16 bg-white md:px-0 md:py-5 md:mx-12 md:w-100 md:my-2">
+ 
+
           {
             <>
-              <div>
                 {(stepNumber === 0 && (
                   <YourInfo
                     onChangeBooking={changeBooking}
                     booking={booking}
                     currentStep={stepNumber}
                     isEmpty={isEmpty}
-                     nextStep={nextStep}
+                    nextStep={nextStep}
                   />
                 )) ||
                   (stepNumber === 1 && (
@@ -157,12 +153,20 @@ const Form = () => {
                       servicesOptions={user.services}
                       employeeOptions={user.employers}
                       booking={booking}
-                      onSelect={ ( data) => setBooking({...booking, ...data}) }
+                      onSelect={ (data) => setBooking({...booking, ...data}) }
                       nextStep={nextStep}
                       prevStep={prevStep}
                     />
+                  )) ||
+                  (stepNumber === 2 && (
+                    <SelectDay
+                    nextStep={nextStep}
+                    prevStep={prevStep}
+                    daysOptions={user.days}
+                    hoursOptions={user.hours}
+                  
+                    />
                   ))}
-              </div>
               {/* <div className="flex justify-between fixed px-16 bottom-0 left-0 w-full bg-white p-5 md:p-0 md:static items-center w-[700px]]">
                 <div
                   onClick={prevStep}

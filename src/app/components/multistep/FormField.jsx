@@ -4,7 +4,7 @@ const FormField = ({
   name,
   label,
   placeholder,
-  onChangeYourInfo,
+  onChangeBooking,
   value,
   isEmpty,
 }) => {
@@ -31,7 +31,7 @@ const FormField = ({
       </div>
       <div>
         <input
-          onChange={onChangeYourInfo}
+          onChange={onChangeBooking}
           name={name}
           className={`font-medium w-full mt-1 p-2 pl-3 rounded-full rounded-lg border ${redBorder} text-[var(--color-principal)] text-[15px] hover:border-[var(--color-principal)] focus:border-white focus:ring-[#bfe2fd]`}
           type="text"
