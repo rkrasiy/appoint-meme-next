@@ -16,12 +16,12 @@ export const user = {
     { id: 4, title: "Corte de barba", precio: "8€", selected: false },
     { id: 5, title: "Corte de pelo bebe", precio: "9€", selected: false },
   ], "days": [
-    { day: '15 HOY', NotAvailable: true },
-    { day: '16 MIÉ',  NotAvailable: false },
-    { day: '18 JUEVES', NotAvailable: false },
-    { day: '19 VIER',  NotAvailable: false },
-    { day: '20 SAB',  NotAvailable: false },
-    { day: '21 DOM',  NotAvailable: true },
+    { numday: '15', day:'HOY', NotAvailable: true },
+    { numday: '16', day:'MAR', NotAvailable: true },
+    { numday: '17', day:'MIE', NotAvailable: true },
+    { numday: '18', day:'JUE', NotAvailable: true },
+    { numday: '19', day:'VIE', NotAvailable: true },
+    { numday: '20', day:'SAB', NotAvailable: true },
 
   ],
   "hours": [
