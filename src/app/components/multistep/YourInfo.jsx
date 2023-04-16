@@ -50,8 +50,8 @@ const YourInfo = ({ booking, onChangeBooking, isEmpty, nextStep }) => {
           ))}
         </div>
       </form>
-      <div className="flex justify-between fixed px-16 bottom-0 left-0 w-full bg-white p-5 md:p-0 md:static items-center w-[700px]]">
-				<button
+      <div className="absolute bottom-0 right-0">
+        <button
 					onClick={nextHandler}
 					className="font-medium bg-[var(--color-principal)] select-none text-white py-3 px-5 rounded-lg cursor-pointer transition duration-100 hover:opacity-90"
 				>

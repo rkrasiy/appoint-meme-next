@@ -17,9 +17,10 @@ const Services = ( props ) => {
 				title="Seleccionar el servicio"
 				desc="Selecciona el servicio y el empleado"
 			/>
-			<div className="my-5">
+			<div className="my-5 text-[14px]">
 
 				<label>Seleccionar un servicio</label>
+				
 				<select
 					onChange={(e)=>onSelect({service: e.target.value})}
 					className="w-full rounded-lg border-gray-300 border p-3 text-sm"
@@ -33,7 +34,7 @@ const Services = ( props ) => {
 					}
 				</select>
 			</div>
-			<div className="my-5">
+			<div className="my-5 text-[14px] ">
 				<label>Seleccionar un empleado</label>
 
 				<select
@@ -48,9 +49,9 @@ const Services = ( props ) => {
 					}
 				</select>
 			</div>
-			<div className="flex justify-between fixed px-16 bottom-0 left-0 w-full bg-white p-5 md:p-0 md:static items-center w-[700px]]">
+			<div className="absolute bottom-0 w-full flex flex-row justify-between">
 				<button onClick={prevHadler}
-					className={`font-medium text-[#9699ab] select-none cursor-pointer transition duration-100 hover:text-[var(--color-principal)]`}>
+					className={`font-medium text-[#9699ab] select-none border border-gray-400 py-3 px-5 rounded-lg cursor-pointer transition duration-100 hover:text-[var(--color-principal)]`}>
 					Atras
 				</button>
 
