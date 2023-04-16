@@ -12,7 +12,7 @@ export default function Home() {
             name: "ruslan",
             id: "1"
         }
-        const url = "https://localhost:4000/booking/"
+        const url = "https://krasiy.com/booking/"
         console.log('Send: ', data)
         const response = await fetch(url, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
